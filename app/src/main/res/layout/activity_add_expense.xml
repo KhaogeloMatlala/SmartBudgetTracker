@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Expense"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Date -->
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Date (YYYY-MM-DD)"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Start Time -->
+        <EditText
+            android:id="@+id/etStartTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Start Time"
+            android:layout_marginBottom="10dp" />
+
+        <!-- End Time -->
+        <EditText
+            android:id="@+id/etEndTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="End Time"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Description -->
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Category -->
+        <EditText
+            android:id="@+id/etCategoryExpense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Category"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Amount -->
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="15dp" />
+
+        <!-- Add Photo Button -->
+        <Button
+            android:id="@+id/btnAddPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Take Photo"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Photo Preview -->
+        <ImageView
+            android:id="@+id/imgExpensePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="15dp"
+            android:background="#DDDDDD"
+            android:scaleType="centerCrop" />
+
+        <!-- Save Expense Button -->
+        <Button
+            android:id="@+id/btnSaveExpense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Expense" />
+
+    </LinearLayout>
+
+</ScrollView>
