@@ -133,6 +133,9 @@ TutorialsPoint. (2026). Android SQLite Tutorial. Retrieved from https://www.tuto
 
 ---
 
+Video link
+https://youtube.com/@dolliematlala?si=uhHsYLqmX9rkrPsw
+
 ## Declaration
 
 I confirm that this work is my own original academic work and that all sources used have been properly acknowledged.
