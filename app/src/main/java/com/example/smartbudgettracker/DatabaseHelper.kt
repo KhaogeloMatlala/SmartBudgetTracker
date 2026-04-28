@@ -26,6 +26,14 @@ class DatabaseHelper(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase) {
 
+
+        db.execSQL("""
+    CREATE TABLE users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        password TEXT NOT NULL
+    )
+""")
         // Table for storing expense categories
         db.execSQL("""
             CREATE TABLE categories (
@@ -70,6 +78,7 @@ class DatabaseHelper(context: Context) :
         oldVersion: Int,
         newVersion: Int
     ) {
+        db.execSQL("DROP TABLE IF EXISTS users")
         db.execSQL("DROP TABLE IF EXISTS categories")
         db.execSQL("DROP TABLE IF EXISTS expenses")
         db.execSQL("DROP TABLE IF EXISTS goals")

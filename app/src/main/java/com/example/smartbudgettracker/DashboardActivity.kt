@@ -16,6 +16,7 @@ class DashboardActivity : AppCompatActivity() {
         val btnGoals = findViewById<Button>(R.id.btnGoals)
         val btnViewExpenses = findViewById<Button>(R.id.btnViewExpenses)
         val btnSummary = findViewById<Button>(R.id.btnSummary)
+        val btnLogout = findViewById<Button>(R.id.btnLogout)
 
         btnCategory.setOnClickListener {
             startActivity(Intent(this, CategoryActivity::class.java))
@@ -35,6 +36,13 @@ class DashboardActivity : AppCompatActivity() {
 
         btnSummary.setOnClickListener {
             startActivity(Intent(this, CategorySummaryActivity::class.java))
+        }
+
+        btnLogout.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
         }
     }
 }

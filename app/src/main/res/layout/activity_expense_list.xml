@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:background="#F1F8F4">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Expenses by Date"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp" />
-
-    <EditText
-        android:id="@+id/etStartDate"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Start Date (YYYY-MM-DD)"
-        android:layout_marginBottom="10dp" />
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <EditText
-        android:id="@+id/etEndDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="End Date (YYYY-MM-DD)"
-        android:layout_marginBottom="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Expenses"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#0B7A34"
+            android:layout_marginBottom="15dp" />
 
-    <Button
-        android:id="@+id/btnFilterExpenses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Filter Expenses"
-        android:layout_marginBottom="20dp" />
+        <Button
+            android:id="@+id/btnLoadAllExpenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Load All Expenses"
+            android:backgroundTint="#0B7A34"
+            android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/tvExpenseResults"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Results will appear here"
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvExpenseResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All expenses will appear here"
+            android:textSize="16sp"
+            android:paddingTop="20dp" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

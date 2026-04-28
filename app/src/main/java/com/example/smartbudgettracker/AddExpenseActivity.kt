@@ -1,129 +1,56 @@
 package com.example.smartbudgettracker
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.io.File
-import java.io.FileOutputStream
 
 class AddExpenseActivity : AppCompatActivity() {
 
-    private var savedPhotoPath: String = "No photo"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_expense)
+        setContentView(R.layout.activity_expense_list)
 
-        // Input fields
-        val date = findViewById<EditText>(R.id.etDate)
-        val startTime = findViewById<EditText>(R.id.etStartTime)
-        val endTime = findViewById<EditText>(R.id.etEndTime)
-        val description = findViewById<EditText>(R.id.etDescription)
-        val category = findViewById<EditText>(R.id.etCategoryExpense)
-        val amount = findViewById<EditText>(R.id.etAmount)
+        val loadAllBtn = findViewById<Button>(R.id.btnLoadAllExpenses)
+        val results = findViewById<TextView>(R.id.tvExpenseResults)
 
-        // Buttons
-        val addPhoto = findViewById<Button>(R.id.btnAddPhoto)
-        val saveExpense = findViewById<Button>(R.id.btnSaveExpense)
+        loadAllBtn.setOnClickListener {
+            val dbHelper = DatabaseHelper(this)
+            val db = dbHelper.readableDatabase
 
-        // Image preview
-        val photoPreview = findViewById<ImageView>(R.id.imgExpensePhoto)
-
-        // Camera launcher
-        val cameraLauncher =
-            registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bitmap: Bitmap? ->
-
-                if (bitmap != null) {
-                    photoPreview.setImageBitmap(bitmap)
-
-                    // Save image internally
-                    savedPhotoPath = saveBitmapToInternalStorage(bitmap)
-
-                    Toast.makeText(this, "Photo captured successfully", Toast.LENGTH_SHORT).show()
-                    Log.d("SmartBudget", "Photo saved at: $savedPhotoPath")
-                } else {
-                    Toast.makeText(this, "No photo taken", Toast.LENGTH_SHORT).show()
-                    Log.d("SmartBudget", "User cancelled photo capture")
-                }
-            }
-
-        // Open camera
-        addPhoto.setOnClickListener {
-            cameraLauncher.launch(null)
-        }
-
-        // Save expense
-        saveExpense.setOnClickListener {
-
-            if (
-                date.text.toString().isEmpty() ||
-                startTime.text.toString().isEmpty() ||
-                endTime.text.toString().isEmpty() ||
-                description.text.toString().isEmpty() ||
-                category.text.toString().isEmpty() ||
-                amount.text.toString().isEmpty()
-            ) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
-                Log.d("SmartBudget", "Validation failed: Empty fields")
-            } else {
-
-                val dbHelper = DatabaseHelper(this)
-                val db = dbHelper.writableDatabase
-
-                val sql = """
-                    INSERT INTO expenses
-                    (date, startTime, endTime, description, category, amount, photo)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)
+            val cursor = db.rawQuery(
                 """
+                SELECT date, startTime, endTime, description, category, amount, photo
+                FROM expenses
+                ORDER BY date DESC
+                """,
+                null
+            )
 
-                db.execSQL(
-                    sql,
-                    arrayOf(
-                        date.text.toString(),
-                        startTime.text.toString(),
-                        endTime.text.toString(),
-                        description.text.toString(),
-                        category.text.toString(),
-                        amount.text.toString().toDouble(),
-                        savedPhotoPath
-                    )
-                )
+            val output = StringBuilder()
 
-                Toast.makeText(this, "Expense saved to database!", Toast.LENGTH_SHORT).show()
-                Log.d("SmartBudget", "Expense saved successfully")
+            if (cursor.count == 0) {
+                output.append("No expenses saved yet.")
+                Log.d("SmartBudget", "No expenses found")
+            } else {
+                output.append("All Saved Expenses:\n\n")
 
-                // Clear fields
-                date.text.clear()
-                startTime.text.clear()
-                endTime.text.clear()
-                description.text.clear()
-                category.text.clear()
-                amount.text.clear()
-                photoPreview.setImageDrawable(null)
+                while (cursor.moveToNext()) {
+                    output.append("Date: ${cursor.getString(0)}\n")
+                    output.append("Time: ${cursor.getString(1)} - ${cursor.getString(2)}\n")
+                    output.append("Description: ${cursor.getString(3)}\n")
+                    output.append("Category: ${cursor.getString(4)}\n")
+                    output.append("Amount: R${cursor.getDouble(5)}\n")
+                    output.append("Photo: ${cursor.getString(6)}\n")
+                    output.append("-------------------------\n")
+                }
 
-                savedPhotoPath = "No photo"
+                Log.d("SmartBudget", "All expenses loaded")
             }
+
+            cursor.close()
+            results.text = output.toString()
         }
-    }
-
-    // Save bitmap to internal storage
-    private fun saveBitmapToInternalStorage(bitmap: Bitmap): String {
-
-        val fileName = "expense_photo_${System.currentTimeMillis()}.jpg"
-        val file = File(filesDir, fileName)
-
-        val outputStream = FileOutputStream(file)
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-
-        outputStream.flush()
-        outputStream.close()
-
-        return file.absolutePath
     }
 }

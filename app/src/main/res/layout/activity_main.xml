@@ -4,35 +4,48 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#F1F8F4">
 
     <TextView
-        android:text="SmartBudget Tracker"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="SmartBudget SA"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#0B7A34"
+        android:layout_marginBottom="30dp" />
 
     <EditText
         android:id="@+id/etUsername"
-        android:hint="Enter Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"/>
+        android:hint="Username"
+        android:layout_marginBottom="12dp" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:hint="Enter Password"
-        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"/>
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:text="Login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:backgroundTint="#0B7A34"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create New Account"
+        android:textColor="#1565C0"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>
