@@ -1,56 +1,138 @@
 package com.example.smartbudgettracker
 
+import android.content.ContentValues
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class AddExpenseActivity : AppCompatActivity() {
 
+    private lateinit var etDate: EditText
+    private lateinit var etStartTime: EditText
+    private lateinit var etEndTime: EditText
+    private lateinit var etDescription: EditText
+    private lateinit var etCategoryExpense: EditText
+    private lateinit var etAmount: EditText
+    private lateinit var btnAddPhoto: Button
+    private lateinit var btnSaveExpense: Button
+    private lateinit var imgExpensePhoto: ImageView
+
+    private var savedPhotoPath: String = "No photo"
+
+    companion object {
+        private const val CAMERA_REQUEST_CODE = 100
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_expense_list)
+        setContentView(R.layout.activity_add_expense)
 
-        val loadAllBtn = findViewById<Button>(R.id.btnLoadAllExpenses)
-        val results = findViewById<TextView>(R.id.tvExpenseResults)
+        etDate = findViewById(R.id.etDate)
+        etStartTime = findViewById(R.id.etStartTime)
+        etEndTime = findViewById(R.id.etEndTime)
+        etDescription = findViewById(R.id.etDescription)
+        etCategoryExpense = findViewById(R.id.etCategoryExpense)
+        etAmount = findViewById(R.id.etAmount)
+        btnAddPhoto = findViewById(R.id.btnAddPhoto)
+        btnSaveExpense = findViewById(R.id.btnSaveExpense)
+        imgExpensePhoto = findViewById(R.id.imgExpensePhoto)
 
-        loadAllBtn.setOnClickListener {
+        btnAddPhoto.setOnClickListener {
+            openCamera()
+        }
+
+        btnSaveExpense.setOnClickListener {
+            saveExpense()
+        }
+    }
+
+    private fun openCamera() {
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+            val photo = data?.extras?.get("data") as Bitmap
+            imgExpensePhoto.setImageBitmap(photo)
+            savedPhotoPath = "Photo captured"
+            Log.d("SmartBudget", "Photo captured successfully")
+        }
+    }
+
+    private fun saveExpense() {
+        val date = etDate.text.toString().trim()
+        val startTime = etStartTime.text.toString().trim()
+        val endTime = etEndTime.text.toString().trim()
+        val description = etDescription.text.toString().trim()
+        val category = etCategoryExpense.text.toString().trim()
+        val amount = etAmount.text.toString().trim()
+
+        if (
+            date.isEmpty() ||
+            startTime.isEmpty() ||
+            endTime.isEmpty() ||
+            description.isEmpty() ||
+            category.isEmpty() ||
+            amount.isEmpty()
+        ) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        try {
             val dbHelper = DatabaseHelper(this)
-            val db = dbHelper.readableDatabase
+            val db = dbHelper.writableDatabase
 
-            val cursor = db.rawQuery(
-                """
-                SELECT date, startTime, endTime, description, category, amount, photo
-                FROM expenses
-                ORDER BY date DESC
-                """,
-                null
-            )
+            val values = ContentValues()
+            values.put("date", date)
+            values.put("startTime", startTime)
+            values.put("endTime", endTime)
+            values.put("description", description)
+            values.put("category", category)
+            values.put("amount", amount.toDouble())
+            values.put("photo", savedPhotoPath)
 
-            val output = StringBuilder()
+            val result = db.insert("expenses", null, values)
 
-            if (cursor.count == 0) {
-                output.append("No expenses saved yet.")
-                Log.d("SmartBudget", "No expenses found")
+            if (result != -1L) {
+                Toast.makeText(this, "Expense saved successfully!", Toast.LENGTH_LONG).show()
+                Log.d("SmartBudget", "Expense saved successfully")
+
+                clearFields()
+
+                startActivity(Intent(this, DashboardActivity::class.java))
+                finish()
             } else {
-                output.append("All Saved Expenses:\n\n")
-
-                while (cursor.moveToNext()) {
-                    output.append("Date: ${cursor.getString(0)}\n")
-                    output.append("Time: ${cursor.getString(1)} - ${cursor.getString(2)}\n")
-                    output.append("Description: ${cursor.getString(3)}\n")
-                    output.append("Category: ${cursor.getString(4)}\n")
-                    output.append("Amount: R${cursor.getDouble(5)}\n")
-                    output.append("Photo: ${cursor.getString(6)}\n")
-                    output.append("-------------------------\n")
-                }
-
-                Log.d("SmartBudget", "All expenses loaded")
+                Toast.makeText(this, "Failed to save expense", Toast.LENGTH_LONG).show()
+                Log.d("SmartBudget", "Failed to save expense")
             }
 
-            cursor.close()
-            results.text = output.toString()
+            db.close()
+
+        } catch (e: Exception) {
+            Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+            Log.e("SmartBudget", "Save expense error: ${e.message}")
         }
+    }
+
+    private fun clearFields() {
+        etDate.text.clear()
+        etStartTime.text.clear()
+        etEndTime.text.clear()
+        etDescription.text.clear()
+        etCategoryExpense.text.clear()
+        etAmount.text.clear()
+        imgExpensePhoto.setImageDrawable(null)
+        savedPhotoPath = "No photo"
     }
 }
