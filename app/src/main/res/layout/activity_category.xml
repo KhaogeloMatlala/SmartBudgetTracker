@@ -1,29 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
-
-
+    android:padding="24dp"
+    android:background="#F1F8F4">
 
     <TextView
-        android:text="Add Category"
-        android:textSize="24sp"
+        android:text="🏷️ Add Category"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp"
+        android:textColor="#0B7A34"
+        android:layout_marginBottom="25dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etCategory"
-        android:hint="Enter Category Name"
+        android:hint="e.g. Food, Transport, Data"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp" />
 
     <Button
         android:id="@+id/btnSaveCategory"
-        android:text="Save Category"
+        android:text="💾 Save Category"
+        android:backgroundTint="#0B7A34"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"/>
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

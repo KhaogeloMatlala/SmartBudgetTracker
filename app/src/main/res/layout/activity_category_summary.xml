@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:background="#F1F8F4">
 
-    <TextView
-        android:text="Category Summary"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/etSummaryStartDate"
-        android:hint="Start Date e.g. 2026-04-01"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/etSummaryEndDate"
-        android:hint="End Date e.g. 2026-04-30"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📊 Category Summary"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#0B7A34"
+            android:layout_marginBottom="25dp" />
 
-    <Button
-        android:id="@+id/btnShowSummary"
-        android:text="Show Summary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Period"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="10dp" />
 
-    <TextView
-        android:id="@+id/tvSummaryResults"
-        android:text="Category totals will appear here"
-        android:textSize="16sp"
-        android:paddingTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etSummaryStartDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="📅 Start Date e.g. 2026-04-01"
+            android:textColor="#000000"
+            android:textColorHint="#777777"
+            android:backgroundTint="#0B7A34"
+            android:layout_marginBottom="15dp" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etSummaryEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="📅 End Date e.g. 2026-04-30"
+            android:textColor="#000000"
+            android:textColorHint="#777777"
+            android:backgroundTint="#0B7A34"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnShowSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📈 Show Summary"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#0B7A34"
+            android:layout_marginBottom="25dp" />
+
+        <TextView
+            android:id="@+id/tvSummaryResults"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💡 Category totals will appear here"
+            android:textSize="17sp"
+            android:textColor="#333333"
+            android:padding="16dp"
+            android:background="#FFFFFF" />
+
+    </LinearLayout>
+</ScrollView>

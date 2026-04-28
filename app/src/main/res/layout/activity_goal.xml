@@ -3,29 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="24dp"
+    android:background="#F1F8F4">
 
     <TextView
-        android:text="Monthly Spending Goals"
-        android:textSize="24sp"
+        android:text="🎯 Monthly Goals"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginBottom="20dp"
+        android:textColor="#0B7A34"
+        android:layout_marginBottom="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etMinGoal"
-        android:hint="Minimum Goal"
+        android:hint="⬇️ Minimum Goal"
         android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etMaxGoal"
-        android:hint="Maximum Goal"
+        android:hint="⬆️ Maximum Goal"
         android:inputType="numberDecimal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp" />
 
     <SeekBar
         android:id="@+id/seekGoal"
@@ -36,14 +39,19 @@
 
     <TextView
         android:id="@+id/tvSeekValue"
-        android:text="Goal preview: R3000"
+        android:text="💡 Goal preview: R3000"
         android:textSize="18sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btnSaveGoals"
-        android:text="Save Goals"
+        android:text="💾 Save Goals"
+        android:backgroundTint="#F9A825"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

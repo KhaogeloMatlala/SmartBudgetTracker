@@ -8,32 +8,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="24dp">
 
+        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All Expenses"
-            android:textSize="24sp"
+            android:text="📋 All Expenses"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="#0B7A34"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="20dp" />
 
+        <!-- Load Button -->
         <Button
             android:id="@+id/btnLoadAllExpenses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Load All Expenses"
+            android:text="🔄 Load All Expenses"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:backgroundTint="#0B7A34"
-            android:textColor="#FFFFFF" />
+            android:layout_marginBottom="20dp" />
 
+        <!-- Results Box -->
         <TextView
             android:id="@+id/tvExpenseResults"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="All expenses will appear here"
+            android:text="💡 All saved expenses will appear here"
             android:textSize="16sp"
-            android:paddingTop="20dp" />
+            android:textColor="#333333"
+            android:padding="16dp"
+            android:background="#FFFFFF" />
 
     </LinearLayout>
+
 </ScrollView>

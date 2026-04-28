@@ -11,8 +11,8 @@
         android:padding="24dp">
 
         <TextView
-            android:text="SmartBudget Dashboard"
-            android:textSize="26sp"
+            android:text="🏠 SmartBudget Dashboard"
+            android:textSize="27sp"
             android:textStyle="bold"
             android:textColor="#0B7A34"
             android:gravity="center"
@@ -22,54 +22,60 @@
 
         <Button
             android:id="@+id/btnCategory"
-            android:text="Create Category"
+            android:text="🏷️ Create Category"
             android:backgroundTint="#0B7A34"
             android:textColor="#FFFFFF"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnExpense"
-            android:text="Add Expense"
+            android:text="💰 Add Expense"
             android:backgroundTint="#1E88E5"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnGoals"
-            android:text="Set Monthly Goals"
+            android:text="🎯 Set Monthly Goals"
             android:backgroundTint="#F9A825"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnViewExpenses"
-            android:text="View All Expenses"
+            android:text="📋 View All Expenses"
             android:backgroundTint="#6A1B9A"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnSummary"
-            android:text="Category Summary"
+            android:text="📊 Category Summary"
             android:backgroundTint="#00897B"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnLogout"
-            android:text="Logout"
+            android:text="🚪 Logout"
             android:backgroundTint="#C62828"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:layout_marginTop="28dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
