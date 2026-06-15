@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 )
 
                 if (cursor.count > 0) {
-                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Hello, $user! 👋", Toast.LENGTH_LONG).show()
                     Log.d("SmartBudget", "User logged in: $user")
 
                     startActivity(Intent(this, DashboardActivity::class.java))

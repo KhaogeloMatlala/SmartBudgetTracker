@@ -13,57 +13,101 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📊 Category Summary"
-            android:textSize="28sp"
+            android:text="📊 Category Spending Graph"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#0B7A34"
-            android:layout_marginBottom="25dp" />
+            android:layout_marginBottom="20dp" />
 
+        <!-- Start Date Button -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Period"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="10dp" />
-
-        <EditText
-            android:id="@+id/etSummaryStartDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="📅 Start Date e.g. 2026-04-01"
-            android:textColor="#000000"
-            android:textColorHint="#777777"
-            android:backgroundTint="#0B7A34"
-            android:layout_marginBottom="15dp" />
-
-        <EditText
-            android:id="@+id/etSummaryEndDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="📅 End Date e.g. 2026-04-30"
-            android:textColor="#000000"
-            android:textColorHint="#777777"
-            android:backgroundTint="#0B7A34"
-            android:layout_marginBottom="20dp" />
+            android:text="Start Date"
+            android:textSize="14sp"
+            android:textColor="#555555" />
 
         <Button
-            android:id="@+id/btnShowSummary"
+            android:id="@+id/btnStartDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="📈 Show Summary"
+            android:text="📅 Select Start Date"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:backgroundTint="#0B7A34"
-            android:layout_marginBottom="25dp" />
+            android:layout_marginBottom="12dp" />
 
         <TextView
-            android:id="@+id/tvSummaryResults"
+            android:id="@+id/tvSelectedStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not selected"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="15dp" />
+
+        <!-- End Date Button -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Date"
+            android:textSize="14sp"
+            android:textColor="#555555" />
+
+        <Button
+            android:id="@+id/btnEndDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="💡 Category totals will appear here"
-            android:textSize="17sp"
+            android:text="📅 Select End Date"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#0B7A34"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvSelectedEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not selected"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Show Graph Button -->
+        <Button
+            android:id="@+id/btnShowGraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📈 Show Graph"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#F9A825"
+            android:layout_marginBottom="25dp" />
+
+        <!-- Bar Chart -->
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginBottom="25dp" />
+
+        <!-- Legend -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🟡 Dashed line = Min Goal | 🔴 Dashed line = Max Goal"
+            android:textSize="13sp"
+            android:textColor="#666666"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Summary Text -->
+        <TextView
+            android:id="@+id/tvGraphSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💡 Graph will appear here"
+            android:textSize="16sp"
             android:textColor="#333333"
             android:padding="16dp"
             android:background="#FFFFFF" />

@@ -1,81 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F8F4">
+    android:background="#E8F5E9">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
+        <!-- Header with icon -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:text="SmartBudget SA"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#0B7A34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="Your financial companion"
+                    android:textSize="13sp"
+                    android:textColor="#666666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Financial Progress Summary Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDashboardSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:text="📊 Your Financial Progress"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#0B7A34"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvDashboardTotalSpent"
+                    android:text="Loading..."
+                    android:textSize="15sp"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ProgressBar
+                    android:id="@+id/progressDashboardBudget"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvDashboardHealth"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Quick Actions Grid -->
         <TextView
-            android:text="🏠 SmartBudget Dashboard"
-            android:textSize="27sp"
+            android:text="Quick Actions"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#0B7A34"
-            android:gravity="center"
-            android:layout_marginBottom="25dp"
-            android:layout_width="match_parent"
+            android:textColor="#333333"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btnCategory"
-            android:text="🏷️ Create Category"
-            android:backgroundTint="#0B7A34"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
 
-        <Button
-            android:id="@+id/btnExpense"
-            android:text="💰 Add Expense"
-            android:backgroundTint="#1E88E5"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnCategory"
+                android:text="🏷️ New Category"
+                android:backgroundTint="#0B7A34"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp" />
 
-        <Button
-            android:id="@+id/btnGoals"
-            android:text="🎯 Set Monthly Goals"
-            android:backgroundTint="#F9A825"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnExpense"
+                android:text="💰 Add Expense"
+                android:backgroundTint="#1E88E5"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btnViewExpenses"
-            android:text="📋 View All Expenses"
-            android:backgroundTint="#6A1B9A"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp"
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnGoals"
+                android:text="🎯 Set Goals"
+                android:backgroundTint="#F9A825"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp" />
+
+            <Button
+                android:id="@+id/btnViewExpenses"
+                android:text="📋 View Expenses"
+                android:backgroundTint="#6A1B9A"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <!-- Insights Section -->
+        <TextView
+            android:text="Insights"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnSummary"
-            android:text="📊 Category Summary"
+            android:text="📊 Spending Graph"
             android:backgroundTint="#00897B"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:layout_marginTop="12dp"
+            android:textSize="14sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/btnBudgetHealth"
+                android:text="💚 Budget Health"
+                android:backgroundTint="#43A047"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp" />
+
+            <Button
+                android:id="@+id/btnBadges"
+                android:text="🏆 My Badges"
+                android:backgroundTint="#E65100"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <!-- Logout -->
         <Button
             android:id="@+id/btnLogout"
             android:text="🚪 Logout"
             android:backgroundTint="#C62828"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:layout_marginTop="28dp"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
