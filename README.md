@@ -53,6 +53,8 @@ Automated build testing is performed via GitHub Actions. The main functionality 
 
 ## 🔗 Links
 - **APK Download:https://github.com/KhaogeloMatlala/SmartBudgetTracker/releases/tag/v1.0
+- **YouTube Link:https://youtube.com/shorts/uFQ4_ZForvs?si=Pzz9vZ92Q4LNDSm5J
+  
 
 ## 📂 Project Structure
 app/src/main/java/com/example/smartbudgettracker/
