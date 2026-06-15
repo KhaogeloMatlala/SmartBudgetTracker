@@ -1,121 +1,88 @@
-# SmartBudget Tracker
+# SmartBudget SA
 
-## Overview
+## 📱 App Purpose
+SmartBudget SA is a personal finance management Android app built in Kotlin. It helps users track daily expenses, set monthly spending goals per category, view spending graphs, and stay motivated through gamification badges. The app is designed for South African users who want a simple, offline-capable budget tracker.
 
-SmartBudget Tracker is an Android application developed using Kotlin in Android Studio.
-The purpose of the application is to help users manage their personal finances by tracking expenses, setting monthly spending goals, organising spending categories, and viewing expense summaries over selected periods.
+## 🎨 Design Considerations
+- **Colour scheme:** Green and white to represent financial growth and clarity
+- **Typography:** Bold, modern fonts for readability
+- **Navigation:** Simple dashboard with clear button-based navigation
+- **Offline-first:** All data stored locally in SQLite — no internet required
+- **User feedback:** Toast messages, notifications, and visual health indicators
 
-The application uses SQLite for local offline data storage and includes input validation, photo capture for expense entries, category summaries, and date filtering for better financial management.
+## 🚀 Features
 
----
+### Core Features
+- User registration and login
+- Create custom expense categories
+- Log expenses with date, time, description, category, amount
+- Set monthly min/max spending goals per category
+- View all expenses in a modern card list
+- Category spending bar graph with goal lines (user-selectable date range)
+- Budget health visual showing spending vs goals (ring progress + per-category bars)
+- Gamification: Earn badges for meeting budget goals and consistent logging
+- Dashboard with financial progress summary card
 
-## Features
+### Custom Features (Own Features)
+1. **Receipt Photo Attachment:** Users can take a photo with the camera or choose from gallery and attach it to an expense entry. Photos are saved to local storage.
+2. **Spending Alerts / Notifications:** After saving an expense, the app checks the monthly category budget. A notification is sent if spending reaches 80% (warning) or exceeds 100% (over budget) of the max goal.
 
-### User Login
+## 🛠️ Tech Stack
+- **Language:** Kotlin
+- **Database:** SQLite (via `SQLiteOpenHelper`)
+- **Charts:** MPAndroidChart
+- **UI:** XML layouts with Material Design components (CardView)
+- **Notifications:** Android NotificationManager with NotificationChannel
+- **CI/CD:** GitHub Actions for automated APK builds
 
-* Users enter username and password to access the application
+## 🔧 GitHub Actions
+This project uses GitHub Actions to automatically build the APK on every push to main/master.
 
-### Dashboard
+**Workflow file:** `.github/workflows/build.yml`
 
-* Central screen used to navigate to all app features
+**What it does:**
+- Checks out the code
+- Sets up JDK 17
+- Runs `./gradlew assembleDebug`
+- Uploads the debug APK as an artifact
 
-### Category Management
+## 🧪 Testing
+Automated build testing is performed via GitHub Actions. The main functionality tested includes:
+- Successful Gradle build
+- APK generation
 
-* Users can create and save expense categories
+## 🔗 Links
+- **APK Download:https://github.com/KhaogeloMatlala/SmartBudgetTracker/releases/tag/v1.0
 
-### Expense Entries
+## 📂 Project Structure
+app/src/main/java/com/example/smartbudgettracker/
+├── MainActivity.kt # Login screen
 
-* Users can record:
+├── RegisterActivity.kt # Registration screen
 
-  * Date
-  * Start time
-  * End time
-  * Description
-  * Category
-  * Amount spent
-  * Photo evidence (captured using the camera)
+├── DashboardActivity.kt # Main dashboard with progress card
 
-### Monthly Spending Goals
+├── CategoryActivity.kt # Create and view categories
 
-* Users can set:
+├── AddExpenseActivity.kt # Add expense with photo + alerts
 
-  * Minimum monthly goal
-  * Maximum monthly goal
+├── ExpenseListActivity.kt # View all expenses
 
-### Expense Viewing
+├── GoalActivity.kt # Set monthly goals per category
 
-* Users can filter and view expenses between selected start and end dates
+├── CategorySummaryActivity.kt # Spending graph with goal lines
 
-### Category Summary
+├── BudgetHealthActivity.kt # Budget health visual
 
-* Users can view total spending per category within a selected date range
+├── BadgesActivity.kt # Gamification badges
 
-### Local Database Storage
+└── DatabaseHelper.kt # SQLite database manager
 
-* SQLite database stores:
-
-  * Categories
-  * Expenses
-  * Monthly goals
-
-### Validation and Logging
-
-* Input validation prevents invalid entries
-* Logcat logging is used for debugging and monitoring app activity
-
----
-
-## Technologies Used
-
-* Kotlin
-* Android Studio
-* XML Layouts
-* SQLite (SQLiteOpenHelper)
-* Android Camera Intent
-* Logcat
-* GitHub (for version control)
-
----
-
-## How to Run the Project
-
-1. Open the project in Android Studio
-
-2. Allow Gradle to sync
-
-3. Build the project using:
-
-   Build → Rebuild Project
-
-4. Run the application using:
-
-   * Android Emulator
-     OR
-   * Physical Android Device
-
-5. Test all features:
-
-   * Login
-   * Dashboard navigation
-   * Category creation
-   * Expense saving
-   * Goal setting
-   * Expense filtering
-   * Category summary
-
----
-
-## Author
-
+## 👤 Author
 Khaogelo Matlala
 
-ST10453718
-
-OPSC6311
-
-28 April 2026
-
----
+## 📄 License
+This project is submitted as part of an academic assignment.
 
 ## References
 
@@ -132,11 +99,6 @@ GeeksforGeeks. (2026). Android SQLite Database Tutorial. Retrieved from https://
 TutorialsPoint. (2026). Android SQLite Tutorial. Retrieved from https://www.tutorialspoint.com
 
 ---
-
-Video link
-https://youtube.com/@dolliematlala?si=uhHsYLqmX9rkrPsw
-
-https://youtube.com/shorts/9WSdS-Vpffc?si=-zyOWuOsjzVA_Dvg
 
 ## Declaration
 
